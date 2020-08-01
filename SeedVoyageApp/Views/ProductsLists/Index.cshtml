@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SeedVoyageApp.Models.ProductsList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a hidden asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Product Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+               Upload Date
+            </th>
+            <th>
+               Product Owner Id
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ProductName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductOwnerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
